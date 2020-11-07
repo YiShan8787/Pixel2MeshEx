@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pixel2Mesh
 This repository contains the TensorFlow implementation for the following paper</br>
 
@@ -114,3 +115,7 @@ Yu-Gang Jiang (ygj AT fudan.edu.cn)
 
 # License
 Apache License version 2.0
+=======
+# Pixel2MeshEx
+a mortified version of pixel2mesh
+>>>>>>> 22cde914c8c22ce80442d7812519f28ef889ac5a
