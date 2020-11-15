@@ -1,15 +1,21 @@
-From tensorflow/tensorflow:latest-gpu-jupyter
+From nvidia/cuda:8.0-devel
 
 LABEL owner='Hao-Yu'
 
-COPY . ./
+COPY . /root
 
-RUN pip install numpy
+RUN apt-get update -y
 
-RUN pip install scikit-image
+RUN apt-get install python3-pip -y
 
-RUN pip install TFLearn
+RUN pip3 install --upgrade pip
 
-RUN pip install opencv-python
+RUN pip3 install numpy
 
-RUN pip install tensorflow==1.3.0
+RUN pip3 install scikit-image
+
+RUN pip3 install TFLearn
+
+RUN pip3 install opencv-python
+
+RUN pip3 install tensorflow==1.14.0
