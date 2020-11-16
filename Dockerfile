@@ -38,7 +38,7 @@ RUN pip install scikit-image
 
 RUN pip install TFLearn
 
-RUN pip install tensorflow==1.14.0
+RUN pip install jupyter
 
 RUN pip install image \
                 scipy \
@@ -51,15 +51,15 @@ RUN pip install image \
 RUN pip install -U numpy
 
 # Add CUDA to the path
-ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
-ENV CUDA_HOME /usr/local/cuda-8.0
-RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
-RUN export CUDA_HOME=/usr/local/cuda-8.0
-RUN echo "CUDA_HOME=/usr/local/cuda-8.0" >> ~/.bashrc
-RUN export CUDA_ROOT=/usr/local/cuda-8.0
-RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
+ENV CUDA_HOME /usr/local/cuda
+#RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+#RUN export CUDA_HOME=/usr/local/cuda-8.0
+#RUN echo "CUDA_HOME=/usr/local/cuda-8.0" >> ~/.bashrc
+#RUN export CUDA_ROOT=/usr/local/cuda-8.0
+#RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
 
-RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
+#RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
 
 RUN cd /usr/local/lib/python2.7/dist-packages/tensorflow/ && ln -s libtensorflow_framework.so.1 libtensorflow_framework.so
 
