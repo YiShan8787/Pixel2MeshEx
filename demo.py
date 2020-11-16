@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 import tensorflow as tf
-import _pickle as pickle
+import cPickle as pickle
 from skimage import io,transform
 from p2m.api import GCN
 from p2m.utils import *
@@ -70,7 +70,7 @@ sess.run(tf.global_variables_initializer())
 model.load(sess)
 
 # Runing the demo
-pkl = pickle.load(open('Data/ellipsoid/info_ellipsoid.dat', 'rb'), encoding='iso-8859-1')
+pkl = pickle.load(open('Data/ellipsoid/info_ellipsoid.dat', 'rb'))
 feed_dict = construct_feed_dict(pkl, placeholders)
 
 img_inp = load_image(FLAGS.image)
@@ -84,4 +84,4 @@ mesh = np.vstack((vert, face))
 pred_path = FLAGS.image.replace('.png', '.obj')
 np.savetxt(pred_path, mesh, fmt='%s', delimiter=' ')
 
-print('Saved to',pred_path)
+print 'Saved to', pred_path

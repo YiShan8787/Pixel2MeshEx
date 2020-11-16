@@ -71,7 +71,7 @@ if __name__=='__main__':
 			trainloss,_=sess.run([loss,train])
 			newt=time.time()
 			best=min(best,newt-t1)
-			print(i,trainloss,(newt-t0)/(i+1),best)
+			print i,trainloss,(newt-t0)/(i+1),best
 			t1=newt
 		#print sess.run([inp1,retb,inp2,retd])
 		#grads=compute_gradient([inp1,inp2],[(16,32,3),(16,32,3)],loss,(1,),[xyz1,xyz2])

@@ -79,7 +79,7 @@ if __name__ == '__main__':
 	data.start()
 
 	image,point,normal,_,_ = data.fetch()
-	print(image.shape)
-	print(point.shape)
-	print(normal.shape)
+	print image.shape
+	print point.shape
+	print normal.shape
 	data.stopped = True

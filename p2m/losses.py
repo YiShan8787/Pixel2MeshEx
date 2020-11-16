@@ -15,7 +15,7 @@
 # limitations under the License.
 #
 import tensorflow as tf
-from p2m.chamfer import *
+from chamfer import *
 
 def laplace_coord(pred, placeholders, block_id):
 	vertex = tf.concat([pred, tf.zeros([1,3])], 0)

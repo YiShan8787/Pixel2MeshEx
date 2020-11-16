@@ -1,21 +1,69 @@
-From nvidia/cuda:8.0-devel
+From nvidia/cuda:8.0-cudnn5-devel
 
 LABEL owner='Hao-Yu'
 
+WORKDIR /root
+
 COPY . /root
 
-RUN apt-get update -y
+# Get required packages
 
-RUN apt-get install python3-pip -y
+#RUN apt-get update -y
 
-RUN pip3 install --upgrade pip
+#RUN apt-get install python-pip -y
 
-RUN pip3 install numpy
+RUN apt-get update && \
+  apt-get install vim \
+                  python-pip \
+                  python-dev \
+                  python-opencv \
+                  python-tk \
+                  libjpeg-dev \
+                  libfreetype6 \
+                  libfreetype6-dev \
+                  zlib1g-dev \
+                  cmake \
+                  wget \
+                  cython \
+                  git \
+                  -y
 
-RUN pip3 install scikit-image
+RUN pip install --upgrade pip
 
-RUN pip3 install TFLearn
+# Get required python modules
 
-RUN pip3 install opencv-python
+RUN pip install numpy
 
-RUN pip3 install tensorflow==1.14.0
+RUN pip install scikit-image
+
+RUN pip install TFLearn
+
+RUN pip install tensorflow==1.14.0
+
+RUN pip install image \
+                scipy \
+                matplotlib \
+                PyYAML \
+                numpy \
+                easydict \
+                tensorflow-gpu==1.14.0
+# Update numpy
+RUN pip install -U numpy
+
+# Add CUDA to the path
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
+ENV CUDA_HOME /usr/local/cuda-8.0
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+RUN export CUDA_HOME=/usr/local/cuda-8.0
+RUN echo "CUDA_HOME=/usr/local/cuda-8.0" >> ~/.bashrc
+RUN export CUDA_ROOT=/usr/local/cuda-8.0
+RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
+
+RUN echo "CUDA_ROOT=/usr/local/cuda-8.0" >> ~/.bashrc
+
+RUN cd /usr/local/lib/python2.7/dist-packages/tensorflow/ && ln -s libtensorflow_framework.so.1 libtensorflow_framework.so
+
+RUN cd external && make clean && make
+
+#ENV PYTHONPATH /root/coco/PythonAPI
+RUN ldconfig

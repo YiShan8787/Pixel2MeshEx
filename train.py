@@ -85,12 +85,12 @@ for epoch in range(FLAGS.epochs):
 		all_loss[iters] = dists
 		mean_loss = np.mean(all_loss[np.where(all_loss)])
 		if (iters+1) % 128 == 0:
-			print('Epoch %d, Iteration %d',epoch + 1,iters + 1)
-			print('Mean loss = %f, iter loss = %f, %d',mean_loss,dists,data.queue.qsize())
+			print 'Epoch %d, Iteration %d'%(epoch + 1,iters + 1)
+			print 'Mean loss = %f, iter loss = %f, %d'%(mean_loss,dists,data.queue.qsize())
 	# Save model
 	model.save(sess)
 	train_loss.write('Epoch %d, loss %f\n'%(epoch+1, mean_loss))
 	train_loss.flush()
 
 data.shutdown()
-print ('Training Finished!')
+print 'Training Finished!'

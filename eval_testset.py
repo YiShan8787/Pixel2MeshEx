@@ -137,7 +137,7 @@ for iters in range(train_number):
 	sum_f[class_id] += f_score(label,predict,d1,d2,[0.0001, 0.0002])
 	sum_cd[class_id] += cd # cd is the mean of all distance
 	sum_emd[class_id] += emd[0] # emd is the sum of all distance
-	print('processed number',iters)
+	print 'processed number', iters
 
 log = open('record_evaluation.txt', 'a')
 for item in model_number:
@@ -145,9 +145,9 @@ for item in model_number:
 	f = sum_f[item] / number
 	cd = (sum_cd[item] / number) * 1000 #cd is the mean of all distance, cd is L2
 	emd = (sum_emd[item] / number) * 0.01 #emd is the sum of all distance, emd is L1
-	print(class_name[item], int(number), f, cd, emd)
-	print(log, class_name[item], int(number), f, cd, emd)
+	print class_name[item], int(number), f, cd, emd
+	print >> log, class_name[item], int(number), f, cd, emd
 log.close()
 sess.close()
 data.shutdown()
-print('Testing Finished!')
+print 'Testing Finished!'
