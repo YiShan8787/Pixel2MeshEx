@@ -1,4 +1,4 @@
-From nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+From nvidia/cuda:8.0-cudnn5-devel
 
 LABEL owner='Hao-Yu'
 
